@@ -44,11 +44,11 @@ class UserTest extends TestCase
     public function test_user_has_name_attribute()
     {
         $user = User::factory()->create([
-            'name' => 'John',
+            'name' => 'aya',
             'email' => 'test@test.com',
             'password' => bcrypt('password')
         ]);
 
-        $this->assertEquals('John', $user->name);
+        $this->assertEquals('aya', $user->name);
     }
 }
