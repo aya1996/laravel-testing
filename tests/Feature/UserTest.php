@@ -27,29 +27,29 @@ class UserTest extends TestCase
         $response->assertRedirect('/home');
     }
 
-    // public function test_auth_user_can_access_home()
-    // {
-    //     $user = User::factory()->create();
+    public function test_auth_user_can_access_home()
+    {
+        $user = User::factory()->create();
 
-    //     $response = $this->actingAs($user)->get('/home');
-    //     $response->assertStatus(200);
-    // }
+        $response = $this->actingAs($user)->get('/home');
+        $response->assertStatus(200);
+    }
 
-    // public function test_unath_user_cannot_access_dasboard()
-    // {
-    //     $response = $this->get('/home');
-    //     $response->assertStatus(302);
-    //     $response->assertRedirect('/login');
-    // }
+    public function test_unath_user_cannot_access_dasboard()
+    {
+        $response = $this->get('/home');
+        $response->assertStatus(302);
+        $response->assertRedirect('/login');
+    }
 
-    // public function test_user_has_name_attribute()
-    // {
-    //     $user = User::factory()->create([
-    //         'name' => 'aya',
-    //         'email' => 'test@test.com',
-    //         'password' => bcrypt('password')
-    //     ]);
+    public function test_user_has_name_attribute()
+    {
+        $user = User::factory()->create([
+            'name' => 'aya',
+            'email' => 'test@test.com',
+            'password' => bcrypt('password')
+        ]);
 
-    //     $this->assertEquals('aya', $user->name);
-    // }
+        $this->assertEquals('aya', $user->name);
+    }
 }
