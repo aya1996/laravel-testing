@@ -50,20 +50,22 @@ class ProductTest extends TestCase
     public function test_unauth_user_cannot_see_buy_button()
     {
         $response = $this->get('/products');
-        $response->assertDontSee('Buy Product');
+        $response->assertStatus(302);
+        $response->assertRedirect('/login');
     }
 
-    // public function test_auth_admin_user_can_see_create_link()
-    // {
-    //     $admin = User::factory()->create(['is_admin' => 1]);
-    //     $response = $this->actingAs($admin)->get('/products');
-    //     $response->assertSee('Create');
-    // }
-    // public function test_unauth_user_cannot_see_create_link()
-    // {
-    //     $response = $this->get('/products');
-    //     $response->assertDontSee('Create');
-    // }
+    public function test_auth_admin_user_can_see_create_link()
+    {
+        $admin = User::factory()->create(['is_admin' => 1]);
+        $response = $this->actingAs($admin)->get('/products');
+        $response->assertSee('Create');
+    }
+    public function test_unauth_user_cannot_see_create_link()
+    {
+        $response = $this->get('/products');
+        $response->assertStatus(302);
+        $response->assertRedirect('/login');
+    }
 
     // public function test_auth_admin_user_can_visit_the_products_create_route()
     // {
