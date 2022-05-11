@@ -2,47 +2,47 @@
 
 @section('content')
 
-<div class="max-w-6xl mx-auto">
+<div class="maw-6xl mauto">
     <h1>Products Create</h1>
     <div class="m-2 p-2">
-        <a class="px-4 py-3 rounded bg-green-400" href="/products">back</a>
+        <a class="p4 py-3 rounded bg-green-400" href="/products">back</a>
     </div>
-    <x-auth-card>
-        <x-slot name="logo">
-            <h1>
-                Create Product
-            </h1>
-        </x-slot>
-        <!-- Validation Errors -->
-        <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <form method="POST" action="{{ route('products.store') }}">
-            @csrf
+    <slot name="logo">
+        <h1>
+            Create Product
+        </h1>
+    </slot>
+    <!-- Validation Errors -->
+    <auth-validation-errors class="mb-4" :errors="$errors" />
 
-            <div>
-                <x-label for="name" :value="__('Name')" />
+    <form method="POST" action="{{ route('products.store') }}">
+        @csrf
 
-                <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" />
-            </div>
+        <div>
+            <label for="name" :value="__('Name')" />
 
-            <div class="mt-4">
-                <x-label for="type" :value="__('Type')" />
+            <input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" />
+        </div>
 
-                <x-input id="type" class="block mt-1 w-full" type="text" name="type" :value="old('type')" />
-            </div>
+        <div class="mt-4">
+            <label for="type" :value="__('Type')" />
 
-            <div class="mt-4">
-                <x-label for="price" :value="__('Price')" />
+            <input id="type" class="block mt-1 w-full" type="text" name="type" :value="old('type')" />
+        </div>
 
-                <x-input id="price" class="block mt-1 w-full" type="text" name="price" />
-            </div>
-            <div class="flex items-center justify-end mt-4">
-                <x-button class="ml-4">
-                    {{ __('Create') }}
-                </x-button>
-            </div>
-        </form>
-    </x-auth-card>
+        <div class="mt-4">
+            <label for="price" :value="__('Price')" />
+
+            <input id="price" class="block mt-1 w-full" type="text" name="price" />
+        </div>
+        <div class="flex items-center justify-end mt-4">
+            <button class="ml-4">
+                {{ __('Create') }}
+            </button>
+        </div>
+    </form>
+
 
 
 

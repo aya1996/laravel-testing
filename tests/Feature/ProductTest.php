@@ -63,7 +63,6 @@ class ProductTest extends TestCase
     {
         $response = $this->get('/products');
         $response->assertDontSee('Create');
-       
     }
 
     public function test_auth_admin_user_can_visit_the_products_create_route()
