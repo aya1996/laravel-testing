@@ -75,6 +75,6 @@ class ProductTest extends TestCase
     {
         $response = $this->get('/products/create');
         $response->assertStatus(403);
-        $response->assertRedirect('/login');
+        
     }
 }

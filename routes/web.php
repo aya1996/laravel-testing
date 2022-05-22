@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -35,3 +36,7 @@ Route::get('/home', function () {
 })->middleware(['auth'])->name('home');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::prefix('google')->name('google.')->group(function () {
+    Route::get('/login', [GoogleController::class, 'LoginWithGoogle'])->name('login');
+    Route::any('/callback', [GoogleController::class, 'CallbackFromGoogle'])->name('callback');
+});
